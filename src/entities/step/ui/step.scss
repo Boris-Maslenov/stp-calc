@@ -1,0 +1,13 @@
+.step {
+    &__title {
+        font-size: 23px;
+        font-weight: 700;
+        &>span {
+            color: $color-red;
+        }
+        &_padding {
+            padding-bottom: 30px;
+        }
+    }
+    padding: 20px 30px 40px 30px;
+}

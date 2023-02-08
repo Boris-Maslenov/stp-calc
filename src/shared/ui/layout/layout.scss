@@ -1,0 +1,25 @@
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    transition: all .2s;
+        @media (min-width: $sm) {
+            max-width: 540px; 
+        }
+        @media (min-width: $md) {
+            max-width: 720px; 
+        }
+        @media (min-width: $lg) {
+            max-width: 960px; 
+        }
+        @media (min-width: $xl) {
+            max-width: 1147px; 
+        }
+}

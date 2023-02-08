@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-const Autocomplete = ({options=[], label=null, onChange=null, getOptionLabel = (option) => option}) => {
+export const Autocomplete = ({options=[], label=null, onChange=null, getOptionLabel = (option) => option}) => {
     // options - массив значений
     // label - название placeholder-a
     // onChange - функция, возвращает выбранное значение
@@ -138,5 +138,3 @@ const Autocomplete = ({options=[], label=null, onChange=null, getOptionLabel = (
             </div>
     );
 };
-
-export default Autocomplete;
