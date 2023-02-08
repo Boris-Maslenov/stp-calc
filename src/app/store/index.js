@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-//import materialReducer from '';
+import calculatorReducer from '../../widgets/calculatorSlice';
+import brandReducer from '../../features/select-brand/model/selectBrandSlice';
 
 const store = configureStore({
-    reducer:  {},
+    reducer:  {calculatorReducer, brandReducer},
     devTools: process.env.NODE_ENV !== 'production',
   });
 

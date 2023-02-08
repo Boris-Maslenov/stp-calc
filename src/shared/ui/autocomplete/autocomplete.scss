@@ -73,13 +73,18 @@
             text-align: left;
             overflow: auto;
             max-height: 300px;
+            z-index: 100;
           &_open {
             display: block;
           }
         }
         &__item {
+         
             padding: 5px 0;
+            padding-left: 10px;
             cursor: pointer;
+            font-size: 18px;
+            margin: 5px 0;
             list-style-type: none;
               &:hover {
                   background-color: #b3d4fc;

@@ -52,6 +52,9 @@
     justify-content: flex-start;
 }
 
+.swiper {
+    overflow-x: clip;
+}
 .swiper-wrapper {
     position: relative;
     width: 100%;

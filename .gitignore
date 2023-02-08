@@ -25,3 +25,6 @@ yarn-error.log*
 #custom
 .package-lock.json
 .gitignore
+
+#server
+/server

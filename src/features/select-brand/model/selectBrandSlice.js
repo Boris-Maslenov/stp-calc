@@ -1,23 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {useHttp} from '../../../shared/lib/useHttp';
+// import {useHttp} from '../../../shared/lib/useHttp';
 const initialState = {
-    status: '',
-    
+      activeBrand: null,
 };
-
-export const fetchBrands = createAsyncThunk(
-    'brand/fetchBrands',
-    async () => {
-        const request = useHttp();
-        return await request('');
-    }
-);
 
 const brendSlice = createSlice({
     name: 'brand',
     initialState,
     reducers: {
-        setBrand: (state, action) => {}
+        setBrand: (state, action) => {
+            state.activeBrand = action.payload;
+        }
     },
-    extraReducers: builder => {}
 });
+
+const {reducer, actions} = brendSlice;
+
+export const {setBrand} = actions;
+
+export default reducer;
