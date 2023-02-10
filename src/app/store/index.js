@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import calculatorReducer from '../../widgets/calculatorSlice';
-import brandReducer from '../../features/select-brand/model/selectBrandSlice';
+import {stepReducer} from '../../entities/step/';
+
 
 const store = configureStore({
-    reducer:  {calculatorReducer, brandReducer},
+    reducer:  {stepReducer},
     devTools: process.env.NODE_ENV !== 'production',
   });
 

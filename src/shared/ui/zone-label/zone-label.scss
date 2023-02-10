@@ -1,0 +1,20 @@
+.zones-labels {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    &__item {
+        background-color: var(--color-white-grey);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        border: 1px solid var(--color-border);
+        margin-bottom: 25px; 
+        margin-right: 25px; 
+    }
+    &__name {
+        color: var(--color-title);
+        font-weight: 500;
+        font-size: 18px;
+        margin-left: 15px;
+    }
+}

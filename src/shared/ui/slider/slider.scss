@@ -9,8 +9,8 @@
             max-width: 110px;
             height: 116px;
             text-align: center;
-            background-color: $color-white-grey;
-            border: 1px solid $color-border;
+            background-color: var(--color-white-grey);
+            border: 1px solid var(--color-border);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +19,7 @@
                     box-shadow: 0px 2px 19px 2px rgba(0, 0, 0, 0.1);
                 }
             &_active {
-                border: 2px solid $color-red;
+                border: 2px solid var(--color-red);
             }
         }
         &__logo {
@@ -35,7 +35,7 @@
             font-weight: 500;
             font-size: 18px;
             line-height: 16px;
-            color: $color-title;
+            color: var(--color-title);
             user-select: none;  
         }
         &_body {
@@ -63,7 +63,7 @@
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
-    justify-content: space-between; //optionals
+    //justify-content: space-between; //optionals
 }
 
 .swiper-pointer-events {

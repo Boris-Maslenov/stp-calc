@@ -1,3 +1,4 @@
+import './autocomplete.scss';
 import {useState, useEffect, useRef} from 'react';
 
 export const Autocomplete = ({options=[], label=null, onChange=null, getOptionLabel = (option) => option}) => {

@@ -3,7 +3,7 @@
         font-size: 23px;
         font-weight: 700;
         &>span {
-            color: $color-red;
+            color: var(--color-red);
         }
         &_padding {
             padding-bottom: 30px;

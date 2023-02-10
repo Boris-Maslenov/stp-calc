@@ -1,3 +1,4 @@
+import './step.scss';
 export const Step = ({number, title, children}) => {
     return(
         <div className="step stp-calc__step">
