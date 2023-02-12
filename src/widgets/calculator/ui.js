@@ -38,7 +38,7 @@ const popularBrands = [
         img: `${IMG_URL}toyota.png`,
     },
     {
-        name: 'Lada',
+        name: 'ВАЗ',
         img: `${IMG_URL}lada.png`,
     },
 
@@ -59,8 +59,8 @@ const bodysNormalis = (bodysArray) => {
     return bodysArray.map( old => ({...old, name: old.body, img: bodysMap[old.body]}) );
 }
 
-
 export const Calculator = () => {
+    console.log('render Calculator')
     const dispatch = useDispatch();
     const { brands, brand, models, model, bodys, body, zones, activeZones } = useSelector(state => state.stepReducer);
     let fetchSubscribe = true;
@@ -81,27 +81,15 @@ export const Calculator = () => {
     const changeBody = (body) => {
         dispatch(selectBody(body));
     }
-    // const changeZone = (zone) => {
-    //     dispatch( selectBody(zone) );
-    // }
 
-    const setActiveZones = (checked, value) => {
-        const status = checked;
-            if(status){
-                //console.log('Добавляем зону: ', value)
-                dispatch(setZone(value));
-            } else {
-                //console.log('удаляем зону: ', value)
-                dispatch( removeZone(value) );
-            }
-    }
+    const setActiveZones = (status, value) => { status ?  dispatch(setZone(value)) : dispatch( removeZone(value) ) }
 
     return (
         <>
             <Step number="01" title="Выберите марку автомобиля">
                     <Autocomplete onChange={brand => changeBrand(brand)} options={brands} label="Выберите марку:" getOptionLabel = { (option) => option.brand } />
                     <h4 className="stp-calc__bold-title">Популярные</h4>
-                    <Slider elements={popularBrands} onChange={elem => console.log(elem)} />
+                    <Slider elements={popularBrands} activeItem={brand.brand} onChange={elem => console.log(elem)} />
             </Step>
 
             <Step number="02" title="Выберите модель автомобиля">
@@ -109,7 +97,7 @@ export const Calculator = () => {
             </Step>
 
             <Step number="03" title="Выберите тип кузова">
-                <Slider elements={bodysNormalis(bodys)} size="big" onChange={elem => changeBody(elem)} />
+                <Slider activeItem={body.body} elements={bodysNormalis(bodys)} size="big" onChange={elem => changeBody(elem)} />
             </Step>
 
             <Step number="04" title="Зоны обработки">   
