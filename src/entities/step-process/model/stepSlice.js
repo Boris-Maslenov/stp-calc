@@ -8,8 +8,10 @@ const initialState = {
     model: [], // Выбранная модель авто
     bodys: [], // Выбранный кузов
     body: [], // Выбранный кузов
-    zones: [],
-    activeZones:[],
+    zones: [], // зоны для рендеригна карточек зон 
+    activeZones:[], // активные зоны, только название. для синхронизации с картчоками зон
+    levels: [], // Уровни, доступны после выбора кузова
+    level: null, // выбранный уровень, по умолчанию Maximum
 };
 
 export const fetchBrands = createAsyncThunk(
@@ -28,7 +30,6 @@ export const fetchModels = createAsyncThunk(
     }
 );
 
-
 const stepSlice = createSlice({
     name: 'step',
     initialState,
@@ -43,6 +44,8 @@ const stepSlice = createSlice({
         },
         selectBody: (state, action) => {
             state.body = action.payload;
+            state.levels = action.payload.levels;
+            state.level = action.payload.levels[0];
             state.zones = action.payload.levels[0].zones;
             state.activeZones = action.payload.levels[0].zones.map(zone => zone.zone) // ok
         },
@@ -51,6 +54,10 @@ const stepSlice = createSlice({
         },
         setZone: (state, action) => {
             state.activeZones.push(action.payload); // черновик
+        },
+        setLevel: (state, action) => {
+            const [level] = state.levels.filter((level) => level.level === action.payload);
+            state.level = level;
         },
     },
     extraReducers: builder => {
@@ -82,6 +89,6 @@ const stepSlice = createSlice({
 
 const {reducer, actions} = stepSlice;
 
-export const {selectBrand, selectModel, selectBody, removeZone, setZone} = actions;
+export const {selectBrand, selectModel, selectBody, removeZone, setZone, setLevel} = actions;
 
 export default reducer;

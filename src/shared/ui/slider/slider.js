@@ -7,7 +7,7 @@ export const Slider = ({elements=[], activeItem, size, onChange}) => {
 
 
     const SliderItem = ({item}) => {
-        console.log(activeItem, item.name);
+        // console.log(activeItem, item.name);
         return(
                 <div onClick={() => onChange(item)} className={activeItem !== item.name ? 'quick-pick__label' : 'quick-pick__label quick-pick__label_active'}>
                     <img src={item.img} alt={item.name} className="quick-pick__logo" />

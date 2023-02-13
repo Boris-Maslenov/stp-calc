@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {stepReducer} from '../../entities/step/';
+import {stepReducer} from '../../entities/step-process/';
 
 
 const store = configureStore({
