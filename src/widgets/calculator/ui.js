@@ -5,12 +5,17 @@ import { fetchBrands, selectBrand, selectModel, selectBody, removeZone, setZone,
 import { Autocomplete, Slider, ZoneLabel, Tab } from '../../shared';
 import { Step } from "../../entities/step-process/";
 
-import {popularBrands, bodysMap} from '../../shared/config';
+import { SelectBrand } from '../../features/select-brand';
+import { SelectModel } from '../../features/select-model';
+import { SelectBody } from '../../features/select-body';
+import { ChangeZones } from '../../features/change-zones';
 
-const bodysNormalis = (bodysArray) => {
-    if(!Array.isArray(bodysArray) ) return [];
-    return bodysArray.map( old => ({...old, name: old.body, img: bodysMap[old.body]}) );
-}
+import {bodysMap} from '../../shared/config';
+
+// const bodysNormalis = (bodysArray) => {
+//     if(!Array.isArray(bodysArray) ) return [];
+//     return bodysArray.map( old => ({...old, name: old.body, img: bodysMap[old.body]}) );
+// }
 
 export const Calculator = () => {
     // console.log('render Calculator')
@@ -25,46 +30,34 @@ export const Calculator = () => {
         }
     }, []);
 
-    const changeBrand = (brand) => {
-        dispatch(selectBrand(brand))
-    }
-    const changeModel = (model) => {
-        dispatch(selectModel(model));
-    }
-    const changeBody = (body) => {
-        dispatch(selectBody(body));
-    }
+    // const changeBrand = (brand) => {
+    //     dispatch(selectBrand(brand))
+    // }
+    // const changeModel = (model) => {
+    //     dispatch(selectModel(model));
+    // }
+    // const changeBody = (body) => {
+    //     dispatch(selectBody(body));
+    // }
 
-    const setActiveZones = (status, value) => { status ?  dispatch(setZone(value)) : dispatch( removeZone(value) ) }
+
 
     return (
         <>
             <Step number="01" title="Выберите марку автомобиля">
-                    <Autocomplete onChange={brand => changeBrand(brand)}
-                                    options={brands} label="Выберите марку:"
-                                    getOptionLabel = { (option) => option.brand }
-                     />
-                    <h4 className="stp-calc__bold-title">Популярные</h4>
-                    <Slider elements={popularBrands} 
-                                activeItem={brand.brand} 
-                                onChange={elem => console.log(elem)}
-                     />
+                <SelectBrand />             
             </Step>
-
             <Step number="02" title="Выберите модель автомобиля">
-                <Autocomplete onChange={model => changeModel(model)} options={models} label="Выберите модель:" getOptionLabel = { (option) => option.model } />
+               <SelectModel />
+            </Step>
+             <Step number="03" title="Выберите тип кузова">
+               <SelectBody />
+            </Step>
+            <Step number="04" title="Зоны обработки">  
+                <ChangeZones />
             </Step>
 
-            {/* <Step number="03" title="Выберите тип кузова">
-                <Slider activeItem={body.body} elements={bodysNormalis(bodys)} size="big" onChange={elem => changeBody(elem)} />
-            </Step>
-
-            <Step number="04" title="Зоны обработки">   
-                <ul className="zones-labels">           
-                    {zones.map((z, key) => <ZoneLabel key={key} zone={z} onChange={(check, value) => setActiveZones(check, value)} />)}
-                </ul>
-            </Step>
-            
+             {/*
             <Step number="05" title="Выберите степень эффективности:">
                 <Tab level={level ? level.level : null} zones={ level ? level.zones.filter(({zone}) => activeZones.includes(zone)) : [] }  body={body.name} consts={ {BODYS_URL}  } onChange={(value) => {dispatch(setLevel(value))}} />
             </Step> */}
