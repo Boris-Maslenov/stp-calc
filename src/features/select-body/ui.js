@@ -5,13 +5,40 @@ import { bodysMap } from '../../shared/config';
 
 export const SelectBody = () => {
     const dispatch = useDispatch();
-    const { body, bodys } = useSelector(state => state.stepReducer);
+    let { body, bodys } = useSelector(state => state.stepReducer);
+    //исправить:
+    if(!body) body = [];
     const bodysNormalis = (bodysArray) => {
         if(!Array.isArray(bodysArray) ) return [];
         return bodysArray.map( old => ({...old, name: old.body, img: bodysMap[old.body]}) );
     }
-    const changeBody = (body) => {
-        dispatch(selectBody(body));
+    const changeBody = (newBody) => {
+        if(newBody.body === body.body) return;
+        dispatch(selectBody(newBody));
     }
-    return  <Slider activeItem={body.body} elements={bodysNormalis(bodys)} size="big" onChange={elem => changeBody(elem)} />
+    return  <Slider activeItem={body.body}
+                    elements={bodysNormalis(bodys)}
+                    size="big" 
+                    onChange={elem => changeBody(elem)}
+                    breakpoints={
+                            {
+                                0: {
+                                    slidesPerView: 2,
+                                
+                                },
+                                375: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 5,
+                                },
+                                576: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 20,
+                                },
+                                768: {
+                                    slidesPerView: 5,
+                                    spaceBetween: 30,
+                                },
+                        }
+                    }
+            />
 }

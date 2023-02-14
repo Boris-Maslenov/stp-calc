@@ -1,13 +1,10 @@
 import './slider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
-export const Slider = ({elements=[], activeItem, size, onChange}) => {
+export const Slider = ({elements=[], activeItem, size, onChange, breakpoints=null}) => {
     const clazz = size === 'big' ? 'quick-pick quick-pick_body' : 'quick-pick';
 
-
     const SliderItem = ({item}) => {
-        // console.log(activeItem, item.name);
         return(
                 <div onClick={() => onChange(item)} className={activeItem !== item.name ? 'quick-pick__label' : 'quick-pick__label quick-pick__label_active'}>
                     <img src={item.img} alt={item.name} className="quick-pick__logo" />
@@ -22,11 +19,11 @@ export const Slider = ({elements=[], activeItem, size, onChange}) => {
                                             </SwiperSlide>
         );
     })(elements);
-
+    //slidesPerView={8} spaceBetween={30}
+    console.log(breakpoints);
     return (
-        <Swiper className={clazz} slidesPerView={8} spaceBetween={30} >
+        <Swiper className={clazz}   breakpoints={breakpoints} >
             {items}
         </ Swiper>
     )
-
 }

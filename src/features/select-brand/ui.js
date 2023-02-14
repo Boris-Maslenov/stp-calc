@@ -6,7 +6,7 @@ import { popularBrands } from "../../shared/config";
 
 export const SelectBrand = () => {
     const dispatch = useDispatch();
-    const { brand, brands } = useSelector( state => state.stepReducer );
+    let { brand, brands } = useSelector( state => state.stepReducer );
     const changeBrand = (brand) => {
         dispatch(selectBrand(brand))
     }
@@ -19,18 +19,40 @@ export const SelectBrand = () => {
             throw new Error();
         }
     }
+    // исправить:
+    if(!brand) brand = [];
 
     return(
         <>
             <Autocomplete onChange={brand => changeBrand(brand)}
                             options={brands} label="Выберите марку:"
                             getOptionLabel = { (option) => option.brand }
-                            selectValue={brand}
             />
             <h4 className="stp-calc__bold-title">Популярные</h4>
             <Slider elements={popularBrands} 
                     activeItem={brand.brand} 
                     onChange={({name}) => changeBrandFromSlider(name)}
+                    breakpoints={
+                            {
+                                0: {
+                                    slidesPerView: 2, 
+                                },
+                                375: {
+                                    slidesPerView: 3,
+                     
+                                },
+                                576: {
+                                    slidesPerView: 4,
+                                },
+                                768: {
+                                    slidesPerView: 6,
+                                },
+                                992: {
+                                    slidesPerView: 8,
+                                    spaceBetween: 30,
+                                }
+                            }
+                    }
             />
         </>
     )
