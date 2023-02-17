@@ -20,7 +20,6 @@ export const Slider = ({elements=[], activeItem, size, onChange, breakpoints=nul
         );
     })(elements);
     //slidesPerView={8} spaceBetween={30}
-    console.log(breakpoints);
     return (
         <Swiper className={clazz}   breakpoints={breakpoints} >
             {items}

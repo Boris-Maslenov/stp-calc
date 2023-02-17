@@ -30,6 +30,14 @@ export const fetchModels = createAsyncThunk(
     }
 );
 
+export const fetchPrice = createAsyncThunk(
+    'step/fetchPrice',
+    async ( data ) => {
+        const request = useHttp();
+        return await request('http://localhost:5000/materials/', 'POST',  JSON.stringify({data}) );
+    }
+);
+
 const stepSlice = createSlice({
     name: 'step',
     initialState,
@@ -100,6 +108,15 @@ const stepSlice = createSlice({
             })
             .addCase(fetchModels.rejected, (state) => {
                 
+            })
+
+        builder
+            .addCase(fetchPrice.pending, (state) => {})
+            .addCase(fetchPrice.fulfilled, (state, action) => {
+                console.log(action.payload);
+            })
+            .addCase(fetchPrice.rejected, (state) => {
+                console.log('упс ошибка');
             })
 
             .addDefaultCase(() => {});

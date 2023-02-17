@@ -21,24 +21,24 @@ export const SelectBody = () => {
                     size="big" 
                     onChange={elem => changeBody(elem)}
                     breakpoints={
-                            {
-                                0: {
-                                    slidesPerView: 2,
-                                
-                                },
-                                375: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 5,
-                                },
-                                576: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 20,
-                                },
-                                768: {
-                                    slidesPerView: 5,
-                                    spaceBetween: 30,
-                                },
-                        }
-                    }
+                                    {
+                                        0: {
+                                            slidesPerView: 2,
+                                        
+                                        },
+                                        375: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 5,
+                                        },
+                                        576: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 20,
+                                        },
+                                        768: {
+                                            slidesPerView: 5,
+                                            spaceBetween: 30,
+                                        },
+                                    }
+                                }
             />
 }

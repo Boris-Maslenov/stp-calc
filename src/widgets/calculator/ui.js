@@ -10,6 +10,7 @@ import { SelectModel } from '../../features/select-model';
 import { SelectBody } from '../../features/select-body';
 import { ChangeZones } from '../../features/change-zones';
 import { ChangeLevel } from '../../features/change-level';
+import {  GetPrice  } from '../../features/get-price';
 
 export const Calculator = () => {
     console.log('Render widjet');
@@ -59,12 +60,13 @@ export const Calculator = () => {
                     <Step number="05" title="Выберите степень эффективности:">
                         <ChangeLevel />
                     </Step>
-                    <button type="button" className="app-button">Рассчитать</button>
+                    < GetPrice />
                 </>
                 : void 0
             }
 
             {/* <Result />  */}
+
               
         </>
     )
