@@ -1,3 +1,4 @@
+import plural  from 'plural-ru';
 import { BASE_URL } from "../../config";
 
 export const Result = ({list, total}) => {
@@ -22,7 +23,7 @@ export const Result = ({list, total}) => {
                                         <div className="flex-table__cell result-table__article">{article}</div>
                                         <div className="flex-table__cell result-table__material"><a target="_blank" href={BASE_URL + link} className="">{name}</a></div>
                                         <div className="flex-table__cell result-table__price">{`${price}₽`} </div>
-                                        <div className="flex-table__cell result-table__count">{`${count} листов`}</div>
+                                        <div className="flex-table__cell result-table__count">{`${count} ${plural(count, 'лист', 'листа', 'листов')}`}</div>
                                         <div className="flex-table__cell result-table__price-total">{`${sum}`}₽</div>
                                     </div>
                             )
