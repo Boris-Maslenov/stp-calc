@@ -12,6 +12,7 @@ const initialState = {
     activeZones:[], // активные зоны, только название. для синхронизации с картчоками зон
     levels: [], // Уровни, доступны после выбора кузова
     level: null, // выбранный уровень, по умолчанию Maximum
+    result: null,
 };
 
 export const fetchBrands = createAsyncThunk(
@@ -54,6 +55,7 @@ const stepSlice = createSlice({
                 state.activeZones = [];
                 state.levels = []; 
                 state.level = null;
+                state.result = null;
             }
             state.brand = action.payload;
             state.models = action.payload.models;
@@ -67,6 +69,7 @@ const stepSlice = createSlice({
             state.activeZones = [];
             state.levels = []; 
             state.level = null;
+            state.result = null;
         },
         selectBody: (state, action) => {
             //ИСПРАВИТь: нужно убрать лишние рендеры при выборе того же самого типа кузова!
@@ -75,15 +78,19 @@ const stepSlice = createSlice({
             state.level = action.payload.levels[0]; // уровень Maximum по умолчанию
             state.zones = action.payload.levels[0].zones; // список зон обработки для первоначального рендеринга(для всех уровней одинаковые поэтому берем у первого)
             state.activeZones = action.payload.levels[0].zones.map((zone) => zone.zone) // по умолчанию все зоны активны, контролируемый список с state.zones
+            state.result = null;
         },
         removeZone: (state, action) => {
+            state.result = null;
             state.activeZones = state.activeZones.filter(zone => zone !== action.payload);
         },
         setZone: (state, action) => {
+            state.result = null;
             state.activeZones.push(action.payload); // черновик
         },
         setLevel: (state, action) => {
             const [level] = state.levels.filter(({level}) => level === action.payload);
+            state.result = null;
             state.level = level;
         },
     },
@@ -113,7 +120,7 @@ const stepSlice = createSlice({
         builder
             .addCase(fetchPrice.pending, (state) => {})
             .addCase(fetchPrice.fulfilled, (state, action) => {
-                console.log(action.payload);
+                state.result = JSON.parse(action.payload);
             })
             .addCase(fetchPrice.rejected, (state) => {
                 console.log('упс ошибка');

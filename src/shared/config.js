@@ -1,3 +1,4 @@
+export const BASE_URL = 'https://stpshopnn.ru';
 export const IMG_URL = 'https://stpshopnn.ru/wp-content/brands/';
 export const BODYS_URL = 'https://stpshopnn.ru/wp-content/bodys/';
 export const popularBrands = [

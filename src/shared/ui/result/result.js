@@ -1,4 +1,7 @@
-export const Result = () => {
+import { BASE_URL } from "../../config";
+
+export const Result = ({list, total}) => {
+    console.log(list);
     return (
         <div className="app-result">
             <div className="flex-table result-table">
@@ -12,48 +15,19 @@ export const Result = () => {
                     </div>
                 </div>
                 <div className="flex-table__body">
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
-                    <div className="flex-table__row">
-                        <div className="flex-table__cell result-table__article">00653-09-00</div>
-                        <div className="flex-table__cell result-table__material">Вибродемпфирующий материал StP Aero</div>
-                        <div className="flex-table__cell result-table__price">501 ₽</div>
-                        <div className="flex-table__cell result-table__count">18 листов</div>
-                        <div className="flex-table__cell result-table__price-total">9 018 ₽</div>
-                    </div>
+                    {
+                        list.map(({name, article, link, count, sum, price}, key) => {
+                            return (
+                                    <div key={key} className="flex-table__row">
+                                        <div className="flex-table__cell result-table__article">{article}</div>
+                                        <div className="flex-table__cell result-table__material"><a target="_blank" href={BASE_URL + link} className="">{name}</a></div>
+                                        <div className="flex-table__cell result-table__price">{`${price}₽`} </div>
+                                        <div className="flex-table__cell result-table__count">{`${count} листов`}</div>
+                                        <div className="flex-table__cell result-table__price-total">{`${sum}`}₽</div>
+                                    </div>
+                            )
+                        } )                   
+                    } 
                 </div>
             </div>
         </div>

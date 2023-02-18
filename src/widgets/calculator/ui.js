@@ -15,7 +15,7 @@ import {  GetPrice  } from '../../features/get-price';
 export const Calculator = () => {
     console.log('Render widjet');
     const dispatch = useDispatch();
-    const { brands, brand, models, model, bodys, body, zones, activeZones, levels , level } = useSelector(state => state.stepReducer);
+    const { brands, brand, model, body, activeZones, result } = useSelector(state => state.stepReducer);
     let fetchSubscribe = true;
 
     useEffect(() => {
@@ -65,9 +65,16 @@ export const Calculator = () => {
                 : void 0
             }
 
-            {/* <Result />  */}
+            {  isStepAll && activeZones.length && (result && result.list.length) ? 
+                <>
+                    <Step number="06" title="Результат рассчета:">
+                        <Result list={result.list} total={result.summ} />
+                    </Step>
+                </>
+                : void 0
+            }
 
-              
+   
         </>
     )
 }
