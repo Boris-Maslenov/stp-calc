@@ -22,7 +22,7 @@
             top: 50%;
             left: 15px;
             transform: translate(0, -50%);
-            pointer-events: none;
+            // pointer-events: none;
           &_active {
             display: block;
           }
@@ -65,7 +65,7 @@
         }
         &__list {
             display: none;
-            background: #cdcdcd;
+            background: #F5F7F8;
             width: 100%;
             position: absolute;
             top:calc(100% + 5px );
@@ -74,8 +74,10 @@
             overflow: auto;
             max-height: 300px;
             z-index: 100;
+            transition: opacity .1s ease;
           &_open {
             display: block;
+            transition: opacity .1s ease;
           }
         }
         &__item {
@@ -87,7 +89,7 @@
             margin: 5px 0;
             list-style-type: none;
               &:hover {
-                  background-color: #b3d4fc;
+                 // background-color: #b3d4fc;
               }
         }
 }

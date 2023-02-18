@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
+import spinner from '../../3-dots-fade.svg';
 import { fetchPrice } from '../../entities/step-process';
 
 export const GetPrice = () => {
     const dispatch = useDispatch();
-    const { level, activeZones } = useSelector(state => state.stepReducer);
+    const { level, activeZones, status } = useSelector(state => state.stepReducer);
     const getMaterials = () => {
         const doobleArray = level.zones.filter(({zone}) => activeZones.includes(zone)).map((item) => ({...item.materials})).map(obj =>  Object.values(obj)).flat();
         const unicArray = (function(){
@@ -26,7 +27,11 @@ export const GetPrice = () => {
     }
 
     return (
-        <button onClick={onClickHandler} type="button" className="app-button">Рассчитать</button>
+        <button onClick={onClickHandler} type="button" className="app-button">
+            { status === 'idle' ? <span>Рассчитать</span> : void 0 }
+            { status === 'loading' ? <span><img src={spinner} alt="spinner" /></span> : void 0 }
+            { status === 'error' ? <span>Произошла ошибка</span> : void 0 }
+        </button>
     )
 }
 

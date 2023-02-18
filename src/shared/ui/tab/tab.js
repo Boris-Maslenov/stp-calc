@@ -1,7 +1,9 @@
 import './tab.scss';
+import plural  from 'plural-ru';
 import {BODYS_MAP, ZONES_MAP} from '../../config';
 
 export const Tab = ({zones, level, body, onChange}) => {
+    console.log(zones);
     if(!zones.length){
         return "Необходмо выбрать хотябы одну зону"
     }
@@ -49,6 +51,7 @@ export const Tab = ({zones, level, body, onChange}) => {
                     </div>
                     <div className="flex-table__body">
                             {
+                                
                                 zones.map(({zone, materials}, key) => {
                                 return(
                                         <div key={key} className="flex-table__row">
@@ -57,10 +60,12 @@ export const Tab = ({zones, level, body, onChange}) => {
                                                     <span>{zone}</span>
                                             </div>
                                             <div className="flex-table__cell zones-table__material-link">
-                                                {materials.map( ({name}, key)=> <a key={key} href="#">{name}</a> ) }
+                                                {/* FIX: на данном этапе в списке нет ссылки*/}
+                                                {materials.map( ({name}, key)=> <span key={key}>{name}</span> ) }
                                             </div>
+                                            {/* FIX: прорверка по _ID */}
                                             <div className="flex-table__cell zones-table__material-count">
-                                                {materials.map( ({count}, key)=> <span key={key}>{count}</span> ) }
+                                                {materials.map( ({count, materialId}, key)=> <span key={key}>{`${count} ${materialId === '63c69b87f9c87bf553b2da9e' ? plural(count, 'банка', 'банки', 'банок') : plural(count, 'лист', 'листа', 'листов')}`}</span> ) }
                                             </div>                                      
                                         </div>
                                     )

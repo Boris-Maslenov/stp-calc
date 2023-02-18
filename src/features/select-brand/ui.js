@@ -19,15 +19,13 @@ export const SelectBrand = () => {
             throw new Error();
         }
     }
-    // исправить:
-    if(!brand) brand = [];
+    // FIX:
+    if(!brand) brand = '';
 
     return(
         <>
-            <Autocomplete onChange={brand => changeBrand(brand)}
-                            options={brands} label="Выберите марку:"
-                            getOptionLabel = { (option) => option.brand }
-            />
+            <Autocomplete customKey={'brand'} items={brands} selectedItem={brand}  onChange={ (selection) => changeBrand(selection) } itemToString={(item) => (item ? item.brand : '')}/>
+
             <h4 className="stp-calc__bold-title">Популярные</h4>
             <Slider elements={popularBrands} 
                     activeItem={brand.brand} 

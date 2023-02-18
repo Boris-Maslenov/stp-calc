@@ -58,7 +58,7 @@ const stepSlice = createSlice({
                 state.result = null;
             }
             state.brand = action.payload;
-            state.models = action.payload.models;
+            state.models = action.payload?.models || [];
         },
         selectModel: (state, action) => {
             state.model = action.payload;
@@ -107,8 +107,7 @@ const stepSlice = createSlice({
                 state.status = 'error';
             })
         builder
-            .addCase(fetchModels.pending, (state) => {
-                
+            .addCase(fetchModels.pending, (state) => { 
             })
             .addCase(fetchModels.fulfilled, (state, action) => {
                 state.models = action.payload;
@@ -118,11 +117,15 @@ const stepSlice = createSlice({
             })
 
         builder
-            .addCase(fetchPrice.pending, (state) => {})
+            .addCase(fetchPrice.pending, (state) => {
+                state.status = 'loading';
+            })
             .addCase(fetchPrice.fulfilled, (state, action) => {
+                state.status = 'idle';
                 state.result = JSON.parse(action.payload);
             })
             .addCase(fetchPrice.rejected, (state) => {
+                state.status = 'error';
                 console.log('упс ошибка');
             })
 

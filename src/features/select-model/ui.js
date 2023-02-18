@@ -6,5 +6,8 @@ export const SelectModel = () => {
     const changeModel = model => dispatch( selectModel(model) );
     const dispatch = useDispatch();
     const { models } = useSelector(state => state.stepReducer);
-    return <Autocomplete onChange={model => changeModel(model)} options={ models || [] } label="Выберите модель:" getOptionLabel = { (option) => option.model } />  
+    return <Autocomplete customKey={'model'} items={models} onChange={ (selection) => changeModel(selection) } itemToString={(item) => (item ? item.model : '')}/>
+    
+    
+    //<Autocomplete onChange={model => changeModel(model)} options={ models || [] } label="Выберите модель:" getOptionLabel = { (option) => option.model } />  
 }

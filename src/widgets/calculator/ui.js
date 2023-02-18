@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBrands, selectBrand, selectModel, selectBody, removeZone, setZone, setLevel } from '../../entities/step-process/';
+import spinner from '../../3-dots-fade.svg';
 
 import { Result } from '../../shared';
 import { Step } from "../../entities/step-process/";
@@ -12,10 +13,18 @@ import { ChangeZones } from '../../features/change-zones';
 import { ChangeLevel } from '../../features/change-level';
 import {  GetPrice  } from '../../features/get-price';
 
+const Spinner = () => {
+    return(
+        <div className='spinner'>
+            <img width={'50px'} src={spinner} alt="spinner" />
+        </div>
+    )
+}
+
 export const Calculator = () => {
     console.log('Render widjet');
     const dispatch = useDispatch();
-    const { brands, brand, model, body, activeZones, result } = useSelector(state => state.stepReducer);
+    const { brands, brand, model, body, activeZones, result, status } = useSelector(state => state.stepReducer);
     let fetchSubscribe = true;
 
     useEffect(() => {
@@ -23,19 +32,32 @@ export const Calculator = () => {
         return () => {fetchSubscribe = false;}
     }, []);
 
-    const isStep1 = brands.length;
-    const isStep2 = brands.length && brand;
+    const isSpinner = status === 'loading';
+    const isError = status === 'error';
+    const isStep1 = brands.length && !isSpinner;
+    const isStep2 = brands.length && brand?.models?.length;
     const isStep3 = brands.length && brand && model;
     const isStepAll = brands.length && brand && model && body;
-
+    const isGetPrice = isStepAll && activeZones.length &&  !result;
+    const isResult = isStepAll && activeZones.length && (result && result.list.length);
 
     return (
         <>
             {
+               isError ?   
+                    <span>Не удалось загрузить данные</span>
+               : void 0
+            }
+            {
+               isSpinner ?   
+                    <Spinner />
+               : void 0
+            }
+            {
                 isStep1 ?    
                 <Step number="01" title="Выберите марку автомобиля">
                     <SelectBrand />             
-                </Step> : 'loading...'
+                </Step> : void 0
             }
         
             {  isStep2 ?
@@ -60,12 +82,16 @@ export const Calculator = () => {
                     <Step number="05" title="Выберите степень эффективности:">
                         <ChangeLevel />
                     </Step>
-                    < GetPrice />
                 </>
                 : void 0
             }
 
-            {  isStepAll && activeZones.length && (result && result.list.length) ? 
+            { isGetPrice  ?
+                    < GetPrice />
+                : void 0
+            }
+
+            {  isResult ? 
                 <>
                     <Step number="06" title="Результат рассчета:">
                         <Result list={result.list} total={result.summ} />
