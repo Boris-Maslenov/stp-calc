@@ -1,3 +1,10 @@
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
 .tab {
     .tab-controls {
         &__list {
@@ -21,6 +28,7 @@
                     content: '';
                     position: absolute;
                     z-index: 3;
+                    top:-2px;
                     left: -2px;                  
                     width: calc(100% - 0px);
                     height: calc(100% - 0px);
@@ -31,24 +39,52 @@
                     transition: all .3s;
                     opacity: 1;
                 }
+            @media(max-width: $lg){
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 25px 0;
+            }
         }
         &__title{
             display: block;
             font-size: 30px;
             font-weight: 600;
             padding-bottom: 7px;
+                @media(max-width: $lg){
+                    font-size: 22px;
+                }
+                @media(max-width: $sm){
+                    font-size: 16px;
+                    margin-top: 10px;
+                }
         }
         &__description{
             display: block;
             font-size: 16px;
+                @media(max-width: $md){
+                    display: none;
+                }
         }
         &__text{
-            width: calc(80% - 10px)
+            width: calc(80% - 10px);
+            text-align: center;
         }
     }
 }
 
 .zones-table {
+    .flex-table__row {
+        @media(max-width: $md){
+           flex-wrap: wrap;
+        }
+        .zones-table__visual {
+            @media(max-width: $md){
+                width: 100%!important;
+                margin-bottom: 15px;
+             } 
+        }
+    }
     &__material-link {
         & > * {
             display: block;
@@ -70,27 +106,40 @@
         align-items: center;
             & > img {
                 max-width: 120px;
+                    @media(max-width: $lg){
+                        max-width: 80px;
+                    }
+                    @media(max-width: $md){
+                        display: none;
+                    }
             }
             & > span {
-                width: 50%
+                width: 50%;
+                    @media (max-width: $md) {
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-decoration: underline;
+                    }
             }
     }
 
     .flex-table__cell {
-            &:nth-child(1) {  // OPTION FIX:
-                // flex: 0 1 auto;
-                // width: calc(30% + 10px);
+            &:nth-child(1) {
                 flex: 0 0 auto;
-                width: 30%;
+                width: 35%;
             }
             &:nth-child(2) {
-                //flex: 1 1 0;
                 flex: 1 0 0%; 
+                    @media (max-width: $md) {
+                        width: 70%;
+                    }
             }
             &:nth-child(3) {
-                //flex: 0 1 10%;
                 flex: 0 0 auto;
                 width: 10%;
+                    @media (max-width: $md) {
+                        width: auto;
+                    }
             }
     }
     .flex-table__head {
@@ -142,7 +191,7 @@
 
     &__cell {
         flex: 0 1 auto;
-        width: 12%;
+        width: 15%;
             &:nth-child(2) {
                 flex: 1 1 auto;
             }
@@ -152,7 +201,10 @@
     }
     &__body {
         font-size: 18px;
-    }
+            @media(max-width: $lg){
+                font-size: 14px;
+            }
+        }
 
 }
 
@@ -163,5 +215,32 @@
     }
     &__price-total {
         font-weight: 500;
+    }
+
+    .flex-table__head {
+        @media (max-width: $sm) {
+            display: none;
+        }
+    }
+    .flex-table__row {
+        @media (max-width: $sm) {
+            flex-wrap: wrap;
+        }
+    }
+
+    .result-table__material {
+        @media (max-width: $sm) {
+            font-weight: 600;
+        }
+    }
+
+    .flex-table__cell {
+        width: 100%;
+        margin: 5px;
+    }
+
+    .result-table__price-total {
+        text-align: right;
+        margin: 0px;
     }
 }

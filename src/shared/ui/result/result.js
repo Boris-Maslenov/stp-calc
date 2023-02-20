@@ -22,10 +22,10 @@ export const Result = ({list, total}) => {
                                     <div key={key} className="flex-table__row">
                                         <div className="flex-table__cell result-table__article">{article}</div>
                                         <div className="flex-table__cell result-table__material"><a target="_blank" href={BASE_URL + link} className="">{name}</a></div>
-                                        <div className="flex-table__cell result-table__price">{`${price}₽`} </div>
+                                        <div className="flex-table__cell result-table__price">{`${price} ₽`} </div>
                                         {/* FIX: прорверка по article */}
                                         <div className="flex-table__cell result-table__count">{`${count} ${article === '00037-01-00' ? plural(count, 'банка', 'банки', 'банок') : plural(count, 'лист', 'листа', 'листов')}`}</div>
-                                        <div className="flex-table__cell result-table__price-total">{`${sum}`}₽</div>
+                                        <div className="flex-table__cell result-table__price-total">{`${sum}`} ₽</div>
                                     </div>
                             )
                         } )                   

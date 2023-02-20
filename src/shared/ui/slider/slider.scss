@@ -1,3 +1,10 @@
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
 .quick-pick {
     padding-top: 30px;
     display: flex;
@@ -21,12 +28,19 @@
             &_active {
                 border: 2px solid var(--color-red);
             }
+            @media (max-width: $sm) {
+                width: 120px;
+            }
+        
         }
         &__logo {
             max-width: 100%;
             // pointer-events: none;
             // touch-action: none;
             user-select: none;  
+                // @media (max-width: $sm) {
+                //     max-width: 120px;
+                // }
         }
         &__name {
             display: block;
@@ -37,6 +51,9 @@
             line-height: 16px;
             color: var(--color-title);
             user-select: none;  
+                @media (max-width: $sm) {
+                    font-size: 16px;
+                }
         }
         &_body {
             justify-content: flex-start;

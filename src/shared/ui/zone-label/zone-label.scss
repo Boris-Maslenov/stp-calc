@@ -1,3 +1,10 @@
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
 .zones-labels {
     display: flex;
     justify-content: flex-start;
@@ -10,6 +17,9 @@
         border: 1px solid var(--color-border);
         margin-bottom: 25px; 
         margin-right: 25px; 
+            @media (max-width: $sm) {
+                width: 100%;
+            }
     }
     &__name {
         color: var(--color-title);
