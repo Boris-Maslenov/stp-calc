@@ -20,9 +20,9 @@ export const Tab = ({zones, level, body, onChange}) => {
                             <span className="tab-controls__description">Максимальная степень защиты</span>
                         </div>
                     </li>
-                     <li onClick={e => onChange('Optimum')} className={level === 'Optimum' ? 'tab-controls__item tab-controls__item_active' : 'tab-controls__item'}>
+                    <li onClick={e => onChange('Optimum')} className={level === 'Optimum' ? 'tab-controls__item tab-controls__item_active' : 'tab-controls__item'}>
                         <div className="tab-controls__icon">
-                            <img src="https://stpshopnn.ru/wp-content/levels/level-icon-base.svg" alt="Optimum" />
+                            <img src="https://stpshopnn.ru/wp-content/levels/level-icon-optimum.svg" alt="Optimum" />
                         </div>
                         <div className="tab-controls__text">
                             <span className="tab-controls__title">Optimum</span>
@@ -31,7 +31,7 @@ export const Tab = ({zones, level, body, onChange}) => {
                     </li>
                     <li onClick={e => onChange('Base')} className={level === 'Base' ? 'tab-controls__item tab-controls__item_active' : 'tab-controls__item'}>
                         <div className="tab-controls__icon">
-                            <img src="https://stpshopnn.ru/wp-content/levels/level-icon-optimum.svg" alt="Base" />
+                            <img src="https://stpshopnn.ru/wp-content/levels/level-icon-base.svg" alt="Base" />
                         </div>
                         <div className="tab-controls__text">
                             <span className="tab-controls__title">Base</span>

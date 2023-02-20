@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { Button } from "../../shared/ui/button/button";
 import spinner from '../../3-dots-fade.svg';
 import { fetchPrice } from '../../entities/step-process';
 
@@ -27,11 +28,12 @@ export const GetPrice = () => {
     }
 
     return (
-        <button onClick={onClickHandler} type="button" className="app-button">
+
+        <Button clickHandler={onClickHandler}>
             { status === 'idle' ? <span>Рассчитать</span> : void 0 }
             { status === 'loading' ? <span><img src={spinner} alt="spinner" /></span> : void 0 }
             { status === 'error' ? <span>Произошла ошибка</span> : void 0 }
-        </button>
+        </Button>
     )
 }
 

@@ -99,8 +99,7 @@ export const Calculator = () => {
                 </>
                 : void 0
             }
-
-   
+            
         </>
     )
 }
