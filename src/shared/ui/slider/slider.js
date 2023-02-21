@@ -1,5 +1,6 @@
 import './slider.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 export const Slider = ({elements=[], activeItem, size, onChange, breakpoints=null}) => {
     const clazz = size === 'big' ? 'quick-pick quick-pick_body' : 'quick-pick';
@@ -21,7 +22,7 @@ export const Slider = ({elements=[], activeItem, size, onChange, breakpoints=nul
     })(elements);
     //slidesPerView={8} spaceBetween={30}
     return (
-        <Swiper className={clazz}   breakpoints={breakpoints} >
+        <Swiper allowTouchMove={true} draggable={true} className={clazz}   breakpoints={breakpoints} >
             {items}
         </ Swiper>
     )

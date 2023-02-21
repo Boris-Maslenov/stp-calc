@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBrands, selectBrand, selectModel, selectBody, removeZone, setZone, setLevel } from '../../entities/step-process/';
+import { fetchBrands } from '../../entities/step-process/';
 import spinner from '../../3-dots-fade.svg';
 
 import { Result } from '../../shared';
@@ -38,7 +38,7 @@ export const Calculator = () => {
     const isStep2 = brands.length && brand?.models?.length;
     const isStep3 = brands.length && brand && model;
     const isStepAll = brands.length && brand && model && body;
-    const isGetPrice = isStepAll && activeZones.length &&  !result;
+    const isGetPrice = isStepAll && activeZones.length && !result;
     const isResult = isStepAll && activeZones.length && (result && result.list.length);
 
     return (
@@ -59,7 +59,6 @@ export const Calculator = () => {
                     <SelectBrand />             
                 </Step> : void 0
             }
-        
             {  isStep2 ?
                 <Step number="02" title="Выберите модель автомобиля">
                     <SelectModel />
@@ -70,13 +69,11 @@ export const Calculator = () => {
                     <SelectBody />
                 </Step> : void 0
             }
-
             {  isStepAll ?
                 <Step number="04" title="Зоны обработки">  
                      <ChangeZones />
                 </Step> : void 0
             }
-
             {  isStepAll && activeZones.length ?
                 <>
                     <Step number="05" title="Выберите степень эффективности:">
@@ -85,12 +82,10 @@ export const Calculator = () => {
                 </>
                 : void 0
             }
-
             { isGetPrice  ?
                     < GetPrice />
                 : void 0
             }
-
             {  isResult ? 
                 <>
                     <Step number="06" title="Результат рассчета:">
@@ -99,7 +94,6 @@ export const Calculator = () => {
                 </>
                 : void 0
             }
-            
         </>
     )
 }

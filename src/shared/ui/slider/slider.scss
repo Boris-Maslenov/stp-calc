@@ -6,14 +6,16 @@ $xl: 1200px;
 $xxl: 1400px;
 
 .quick-pick {
-    padding-top: 30px;
+    padding-top: 30px!important;
+    padding-bottom: 20px!important;
+    overflow-y: hidden;
     display: flex;
     justify-content: space-between;
         &__label {
             cursor: pointer;
             position: relative;
             width: 100%;
-            max-width: 110px;
+            //max-width: 110px;
             height: 116px;
             text-align: center;
             background-color: var(--color-white-grey);
@@ -29,7 +31,7 @@ $xxl: 1400px;
                 border: 2px solid var(--color-red);
             }
             @media (max-width: $sm) {
-                width: 120px;
+                //width: 120px;
             }
         
         }
@@ -58,7 +60,7 @@ $xxl: 1400px;
         &_body {
             justify-content: flex-start;
             .quick-pick__label {
-                max-width: 180px;
+                //max-width: 180px;
                 margin-right: 3%; 
             }
 
@@ -69,9 +71,6 @@ $xxl: 1400px;
     justify-content: flex-start;
 }
 
-.swiper {
-    overflow-x: clip;
-}
 .swiper-wrapper {
     position: relative;
     width: 100%;

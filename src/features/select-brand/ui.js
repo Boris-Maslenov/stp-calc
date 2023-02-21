@@ -34,6 +34,7 @@ export const SelectBrand = () => {
                             {
                                 0: {
                                     slidesPerView: 2, 
+                                    spaceBetween: 10,
                                 },
                                 375: {
                                     slidesPerView: 3,

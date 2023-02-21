@@ -9,11 +9,9 @@ export const Autocomplete = ({customKey, items, selectedItem='', onChange, itemT
                   const listClass = isOpen ? 'autocomplete__list autocomplete__list_open' : 'autocomplete__list';
                   const autocompleteLabelClass = inputValue  ? 'autocomplete__label' : 'autocomplete__label autocomplete__label_active';
                   const autocompleteButtonClass = isOpen ? 'autocomplete__button autocomplete__button_open' : 'autocomplete__button';
-                //   console.log({...getToggleButtonProps()});
-                //const {onClick} = getToggleButtonProps()
                   return (
                       <div className={'autocomplete'}>
-                          <div className="autocomplete__theme">
+                          <div className="autocomplete__theme" >
                           <span className={autocompleteLabelClass}>Выберите марку</span>
                           <input className='autocomplete__input'   {...getInputProps()} />
                           <button className={autocompleteButtonClass} aria-label={'toggle menu'} {...getToggleButtonProps()}></button>

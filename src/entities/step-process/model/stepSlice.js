@@ -19,7 +19,8 @@ export const fetchBrands = createAsyncThunk(
     'step/fetchBrands',
     async () => {
         const request = useHttp();
-        return await request('http://localhost:5000/brands/');
+        //return await request('http://localhost:5000/brands/');
+        return await request('http://62.113.107.21:5000/brands/');
     }
 );
 
@@ -27,7 +28,7 @@ export const fetchModels = createAsyncThunk(
     'step/fetchModels',
     async () => {
         const request = useHttp();
-        return await request('http://localhost:5000/models/');
+        return await request('http://62.113.107.21:5000/models/');
     }
 );
 
@@ -35,7 +36,7 @@ export const fetchPrice = createAsyncThunk(
     'step/fetchPrice',
     async ( data ) => {
         const request = useHttp();
-        return await request('http://localhost:5000/materials/', 'POST',  JSON.stringify({data}) );
+        return await request('http://62.113.107.21:5000/materials/', 'POST',  JSON.stringify({data}) );
     }
 );
 

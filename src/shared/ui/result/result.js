@@ -3,7 +3,6 @@ import { Button } from '../button/button';
 import { BASE_URL } from "../../config";
 
 export const Result = ({list, total}) => {
-    console.log(list);
     return (
         <div className="app-result">
             <div className="flex-table result-table">
@@ -35,8 +34,7 @@ export const Result = ({list, total}) => {
             </div>
             <div className="total">
                 <p className='total__sum'><span>Итого: </span>{`${total} ₽`}</p>
-                <Button setDisabled={true}>{'Заказать'}</Button>
-                {/* <button disabled className='app-button app-button_default'>Заказать</button> */}
+                <Button clazz={'app-button app-button_default'} setDisabled={true}>{'Заказать'}</Button>
             </div>
         </div>
   

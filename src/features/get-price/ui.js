@@ -28,7 +28,6 @@ export const GetPrice = () => {
     }
 
     return (
-
         <Button clickHandler={onClickHandler}>
             { status === 'idle' ? <span>Рассчитать</span> : void 0 }
             { status === 'loading' ? <span><img src={spinner} alt="spinner" /></span> : void 0 }

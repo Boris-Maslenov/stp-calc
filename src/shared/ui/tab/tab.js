@@ -3,7 +3,6 @@ import plural  from 'plural-ru';
 import {BODYS_MAP, ZONES_MAP} from '../../config';
 
 export const Tab = ({zones, level, body, onChange}) => {
-    console.log(zones);
     if(!zones.length){
         return "Необходмо выбрать хотябы одну зону"
     }
@@ -50,17 +49,16 @@ export const Tab = ({zones, level, body, onChange}) => {
                         </div>
                     </div>
                     <div className="flex-table__body">
-                            {
-                                
+                            {  
                                 zones.map(({zone, materials}, key) => {
-                                return(
+                                    return (
                                         <div key={key} className="flex-table__row">
                                             <div className="flex-table__cell zones-table__visual">
-                                                    <img src={`${BODYS_MAP[body]}zones/${ZONES_MAP[zone]}`} alt={zone} />
-                                                    <span>{zone}</span>
+                                                <img src={`${BODYS_MAP[body]}zones/${ZONES_MAP[zone]}`} alt={zone} />
+                                                <span>{zone}</span>
                                             </div>
                                             <div className="flex-table__cell zones-table__material-link">
-                                                {/* FIX: на данном этапе в списке нет ссылки*/}
+                                            {/* FIX: на данном этапе в списке нет ссылки*/}
                                                 {materials.map( ({name}, key)=> <span key={key}>{name}</span> ) }
                                             </div>
                                             {/* FIX: прорверка по _ID */}
