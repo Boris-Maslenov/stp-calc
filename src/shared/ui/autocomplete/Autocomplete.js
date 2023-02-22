@@ -1,20 +1,22 @@
 import './autocomplete.scss';
+import {useRef} from 'react';
 import Downshift from 'downshift';
-
+// aria-label={'toggle menu'} {...getToggleButtonProps()}
 export const Autocomplete = ({customKey, items, selectedItem='', onChange, itemToString}) => {
+    const buttonRef = useRef();
   return(
       <Downshift customKey={customKey} items={items} selectedItem={selectedItem}  onChange={onChange} itemToString={itemToString} >
       {
-          ( {getInputProps,getItemProps,getMenuProps,getLabelProps,getToggleButtonProps,inputValue,highlightedIndex,selectedItem,isOpen} ) => {
+          ( {getInputProps,getItemProps,getMenuProps,getLabelProps,getToggleButtonProps,inputValue,highlightedIndex,selectedItem,isOpen, getRootProps} ) => {
                   const listClass = isOpen ? 'autocomplete__list autocomplete__list_open' : 'autocomplete__list';
-                  const autocompleteLabelClass = inputValue  ? 'autocomplete__label' : 'autocomplete__label autocomplete__label_active';
+                  const autocompleteLabelClass = inputValue || isOpen  ? 'autocomplete__label autocomplete__label_active' : 'autocomplete__label';
                   const autocompleteButtonClass = isOpen ? 'autocomplete__button autocomplete__button_open' : 'autocomplete__button';
                   return (
                       <div className={'autocomplete'}>
-                          <div className="autocomplete__theme" >
-                          <span className={autocompleteLabelClass}>Выберите марку</span>
-                          <input className='autocomplete__input'   {...getInputProps()} />
-                          <button className={autocompleteButtonClass} aria-label={'toggle menu'} {...getToggleButtonProps()}></button>
+                          <div className="autocomplete__theme"  >
+                          <label className={autocompleteLabelClass} {...getLabelProps()}>Выберите марку</label>
+                          <input  onClick={() => buttonRef.current.click()} className='autocomplete__input'   {...getInputProps()} />
+                          <button ref={buttonRef} className={autocompleteButtonClass}   {...getToggleButtonProps()}></button>
                           <ul className={listClass} {...getMenuProps()}>
                                   {isOpen && items
                                       .filter((item) => item[customKey].toLowerCase().includes(inputValue.toLowerCase()))
