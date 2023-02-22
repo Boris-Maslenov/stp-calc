@@ -220,6 +220,9 @@ $xxl: 1400px;
     .flex-table__cell {
         width: 100%;
         margin: 5px;
+        a {
+            color: #111;
+        }
     }
 
     .result-table__price-total {
