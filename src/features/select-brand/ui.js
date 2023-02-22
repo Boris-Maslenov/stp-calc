@@ -24,8 +24,13 @@ export const SelectBrand = () => {
 
     return(
         <>
-            <Autocomplete customKey={'brand'} items={brands} selectedItem={brand}  onChange={ (selection) => changeBrand(selection) } itemToString={(item) => (item ? item.brand : '')}/>
-
+            <Autocomplete label="Выбрать марку:" 
+                            customKey={'brand'}
+                            items={brands} 
+                            selectedItem={brand} 
+                            onChange={ (selection) => changeBrand(selection) } 
+                            itemToString={(item) => (item ? item.brand : '')}
+             />
             <h4 className="stp-calc__bold-title">Популярные</h4>
             <Slider elements={popularBrands} 
                     activeItem={brand.brand} 
@@ -38,7 +43,6 @@ export const SelectBrand = () => {
                                 },
                                 375: {
                                     slidesPerView: 3,
-                     
                                 },
                                 576: {
                                     slidesPerView: 4,

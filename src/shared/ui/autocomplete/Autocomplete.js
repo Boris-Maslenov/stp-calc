@@ -1,7 +1,7 @@
 import './autocomplete.scss';
 import {useRef} from 'react';
 import Downshift from 'downshift';
-export const Autocomplete = ({customKey, items, selectedItem='', onChange, itemToString}) => {
+export const Autocomplete = ({customKey, items, selectedItem='', onChange, itemToString, label=""}) => {
 const buttonRef = useRef();
   return(
       <Downshift customKey={customKey} items={items} selectedItem={selectedItem}  onChange={onChange} itemToString={itemToString} >
@@ -13,7 +13,7 @@ const buttonRef = useRef();
                   return (
                       <div className={'autocomplete'}>
                           <div className="autocomplete__theme"  >
-                          <label className={autocompleteLabelClass} {...getLabelProps()}>Выберите марку</label>
+                          <label className={autocompleteLabelClass} {...getLabelProps()}>{label}</label>
                           <input  onClick={() => buttonRef.current.click()} className='autocomplete__input'   {...getInputProps()} />
                           <button ref={buttonRef} className={autocompleteButtonClass}  aria-label={'toggle menu'}  {...getToggleButtonProps()}></button>
                           <ul className={listClass} {...getMenuProps()}>
