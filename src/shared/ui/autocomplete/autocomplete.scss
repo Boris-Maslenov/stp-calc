@@ -1,4 +1,4 @@
-.autocomplete {
+.app .autocomplete {
     width: 100%;
     position: relative;
         &__theme {
@@ -39,6 +39,7 @@
             padding: 12px 4px 12px 15px;
         }
         &__button {
+            cursor: pointer;
             outline: none;
             border: none;
             position: absolute;

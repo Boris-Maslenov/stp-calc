@@ -5,7 +5,7 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
-.quick-pick {
+.app .quick-pick {
     padding-top: 30px!important;
     padding-bottom: 20px!important;
     overflow-y: hidden;
@@ -15,7 +15,6 @@ $xxl: 1400px;
             cursor: pointer;
             position: relative;
             width: 100%;
-            //max-width: 110px;
             height: 116px;
             text-align: center;
             background-color: var(--color-white-grey);
@@ -30,19 +29,11 @@ $xxl: 1400px;
             &_active {
                 border: 2px solid var(--color-red);
             }
-            @media (max-width: $sm) {
-                //width: 120px;
-            }
-        
         }
         &__logo {
             max-width: 100%;
-            // pointer-events: none;
-            // touch-action: none;
             user-select: none;  
-                // @media (max-width: $sm) {
-                //     max-width: 120px;
-                // }
+            width: auto;
         }
         &__name {
             display: block;
@@ -60,18 +51,17 @@ $xxl: 1400px;
         &_body {
             justify-content: flex-start;
             .quick-pick__label {
-                //max-width: 180px;
                 margin-right: 3%; 
             }
 
         }
 }
-.quick-body {
+.app .quick-body {
     display: flex;
     justify-content: flex-start;
 }
 
-.swiper-wrapper {
+.app .swiper-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -79,18 +69,17 @@ $xxl: 1400px;
     display: flex;
     transition-property: transform;
     box-sizing: content-box;
-    //justify-content: space-between; //optionals
 }
 
-.swiper-pointer-events {
+.app .swiper-pointer-events {
     touch-action: pan-y;
 }
 
-.swiper-slide {
+.app .swiper-slide {
     width: auto;
 }
 
-.swiper-slide {
+.app .swiper-slide {
     flex-shrink: 0;
     width: 100%;
     height: 100%;

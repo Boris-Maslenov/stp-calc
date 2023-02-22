@@ -5,7 +5,7 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
-.tab {
+.app .tab {
     .tab-controls {
         &__list {
             width: 100%;
@@ -73,7 +73,7 @@ $xxl: 1400px;
     }
 }
 
-.zones-table {
+.app .zones-table {
     .flex-table__row {
         @media(max-width: $md){
            flex-wrap: wrap;
@@ -152,7 +152,7 @@ $xxl: 1400px;
 
 }
 
-.flex-table {
+.app .flex-table {
     &__head {
         .flex-table__row {
             border-bottom: 1px solid var(--color-border);
@@ -191,7 +191,7 @@ $xxl: 1400px;
 
 }
 
-.result-table {
+.app .result-table {
     &__article {
         font-size: 12px;
         color: var(--color-dark-grey);

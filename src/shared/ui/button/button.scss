@@ -1,4 +1,4 @@
-.app-button {
+.app .app-button {
     background-color: var(--color-red);
     border: none;
     outline: none;
@@ -14,9 +14,14 @@
             margin: 0 0;
         }
         &:hover {
+            cursor: pointer;
             box-shadow: 0px 2px 20px 2px rgba(0, 0, 0, 0.2);
         }
     &:disabled {
         background-color: var(--color-dark-grey);
+    }
+    & img {
+        width:auto;
+        height: auto;
     }
 }

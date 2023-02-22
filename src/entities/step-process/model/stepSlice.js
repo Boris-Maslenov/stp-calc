@@ -20,7 +20,7 @@ export const fetchBrands = createAsyncThunk(
     async () => {
         const request = useHttp();
         //return await request('http://localhost:5000/brands/');
-        return await request('http://62.113.107.21:5000/brands/');
+        return await request('https://stoiidlars.ru/brands/');
     }
 );
 
@@ -28,7 +28,7 @@ export const fetchModels = createAsyncThunk(
     'step/fetchModels',
     async () => {
         const request = useHttp();
-        return await request('http://62.113.107.21:5000/models/');
+        return await request('https://stoiidlars.ru/models/');
     }
 );
 
@@ -36,7 +36,7 @@ export const fetchPrice = createAsyncThunk(
     'step/fetchPrice',
     async ( data ) => {
         const request = useHttp();
-        return await request('http://62.113.107.21:5000/materials/', 'POST',  JSON.stringify({data}) );
+        return await request('https://stoiidlars.ru/materials/', 'POST',  JSON.stringify({data}) );
     }
 );
 

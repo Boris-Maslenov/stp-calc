@@ -16,7 +16,7 @@ import {  GetPrice  } from '../../features/get-price';
 const Spinner = () => {
     return(
         <div className='spinner'>
-            <img width={'50px'} src={spinner} alt="spinner" />
+            <img style={{'width': '50px'}} src={spinner} alt="spinner" />
         </div>
     )
 }
