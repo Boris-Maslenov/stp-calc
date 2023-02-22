@@ -1,4 +1,5 @@
 .app .app-button {
+    position: relative;
     background-color: var(--color-red);
     border: none;
     outline: none;
@@ -10,6 +11,7 @@
     display: block;
     margin: 0 auto;
     min-width: 164px;
+    min-height: 58px;
         &_default {
             margin: 0 0;
         }

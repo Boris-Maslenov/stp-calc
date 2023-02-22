@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../shared/ui/button/button";
-import spinner from '../../3-dots-fade.svg';
+import { Spinner } from "../../shared/";
 import { fetchPrice } from '../../entities/step-process';
 
 export const GetPrice = () => {
@@ -30,7 +30,7 @@ export const GetPrice = () => {
     return (
         <Button clickHandler={onClickHandler}>
             { status === 'idle' ? <span>Рассчитать</span> : void 0 }
-            { status === 'loading' ? <span><img src={spinner} alt="spinner" /></span> : void 0 }
+            { status === 'loading' ? <Spinner position={'absolute'} /> : void 0 }
             { status === 'error' ? <span>Произошла ошибка</span> : void 0 }
         </Button>
     )
