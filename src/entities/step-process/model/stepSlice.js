@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { useHttp } from '../../../shared/api';
 const initialState = {
-    status: 'idle', // loading, error, idle
+    status: 'idle', // loading, error, idle // состояние загрузки моделей
+    statusResult: 'idle', // loading, error, idle // состояние загрузки результата
     brands: [], // массив марок авто
     brand: null, // Выбранная марка авто
     models: [], // Модели выбранного бренда
@@ -119,15 +120,14 @@ const stepSlice = createSlice({
 
         builder
             .addCase(fetchPrice.pending, (state) => {
-                state.status = 'loading';
+                state.statusResult = 'loading';
             })
             .addCase(fetchPrice.fulfilled, (state, action) => {
-                state.status = 'idle';
+                state.statusResult = 'idle';
                 state.result = JSON.parse(action.payload);
             })
             .addCase(fetchPrice.rejected, (state) => {
-                state.status = 'error';
-                console.log('упс ошибка');
+                state.statusResult = 'error';
             })
 
             .addDefaultCase(() => {});
