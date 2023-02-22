@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBrands } from '../../entities/step-process/';
-import spinner from '../../3-dots-fade.svg';
 
-import { Result } from '../../shared';
+import { Result, Spinner } from '../../shared';
 import { Step } from "../../entities/step-process/";
 
 import { SelectBrand } from '../../features/select-brand';
@@ -12,14 +11,6 @@ import { SelectBody } from '../../features/select-body';
 import { ChangeZones } from '../../features/change-zones';
 import { ChangeLevel } from '../../features/change-level';
 import {  GetPrice  } from '../../features/get-price';
-
-const Spinner = () => {
-    return(
-        <div className='spinner'>
-            <img style={{'width': '50px'}} src={spinner} alt="spinner" />
-        </div>
-    )
-}
 
 export const Calculator = () => {
     console.log('Render widjet');
@@ -50,7 +41,7 @@ export const Calculator = () => {
             }
             {
                isSpinner ?   
-                    <Spinner />
+                    <Spinner width={50} />
                : void 0
             }
             {

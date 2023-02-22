@@ -9,6 +9,7 @@ $xxl: 1400px;
     width: 100%;
     margin: 0 auto;
     padding: 0 10px;
+    position: relative;
     transition: all .2s;
         @media (min-width: $sm) {
             max-width: 540px; 
