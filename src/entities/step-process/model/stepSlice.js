@@ -20,16 +20,18 @@ export const fetchBrands = createAsyncThunk(
     'step/fetchBrands',
     async () => {
         const request = useHttp();
-        //return await request('http://localhost:5000/brands/');
+        // return await request('http://localhost:5000/brands/');
         return await request('https://stoiidlars.ru/brands/');
     }
 );
 
 export const fetchModels = createAsyncThunk(
     'step/fetchModels',
-    async () => {
+    async (payload) => {
         const request = useHttp();
-        return await request('https://stoiidlars.ru/models/');
+        return await request(`https://stoiidlars.ru/models/?id=${payload._id}`);
+        //return await request(`http://localhost:5000/models/?id=${payload._id}`);
+        //return await request('https://stoiidlars.ru/models/');
     }
 );
 
@@ -47,7 +49,6 @@ const stepSlice = createSlice({
     reducers: {
         selectBrand: (state, action) => {
             // Сбросим весь выбор после смены авто
-            // ИСПРАВИТЬ: сделать контролируемый autocomlite (bags: при сбросе остается старое значение)
             if(state.brands.length){
                 state.models = [];
                 state.model = null;
@@ -74,7 +75,6 @@ const stepSlice = createSlice({
             state.result = null;
         },
         selectBody: (state, action) => {
-            //ИСПРАВИТь: нужно убрать лишние рендеры при выборе того же самого типа кузова!
             state.body = action.payload; // активный кузов
             state.levels = action.payload.levels; // уровни
             state.level = action.payload.levels[0]; // уровень Maximum по умолчанию
@@ -88,7 +88,7 @@ const stepSlice = createSlice({
         },
         setZone: (state, action) => {
             state.result = null;
-            state.activeZones.push(action.payload); // черновик
+            state.activeZones.push(action.payload); // ok
         },
         setLevel: (state, action) => {
             const [level] = state.levels.filter(({level}) => level === action.payload);
@@ -109,13 +109,14 @@ const stepSlice = createSlice({
                 state.status = 'error';
             })
         builder
-            .addCase(fetchModels.pending, (state) => { 
+            .addCase(fetchModels.pending, () => { 
+                // FIX: Добавить loader
             })
             .addCase(fetchModels.fulfilled, (state, action) => {
                 state.models = action.payload;
             })
-            .addCase(fetchModels.rejected, (state) => {
-                
+            .addCase(fetchModels.rejected, () => {
+                console.log('Ошибка загрузки данных');
             })
 
         builder

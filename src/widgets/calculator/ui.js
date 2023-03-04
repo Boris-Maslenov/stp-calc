@@ -15,7 +15,7 @@ import {  GetPrice  } from '../../features/get-price';
 export const Calculator = () => {
     console.log('Render widjet');
     const dispatch = useDispatch();
-    const { brands, brand, model, body, activeZones, result, status } = useSelector(state => state.stepReducer);
+    const { brands, brand, models, model, body, activeZones, result, status } = useSelector(state => state.stepReducer);
     let fetchSubscribe = true;
 
     useEffect(() => {
@@ -26,8 +26,8 @@ export const Calculator = () => {
     const isSpinner = status === 'loading';
     const isError = status === 'error';
     const isStep1 = brands.length && !isSpinner;
-    const isStep2 = brands.length && brand?.models?.length;
-    const isStep3 = brands.length && brand && model;
+    const isStep2 = isStep1 && models.length;
+    const isStep3 = isStep2 && model;
     const isStepAll = brands.length && brand && model && body;
     const isGetPrice = isStepAll && activeZones.length && !result;
     const isResult = isStepAll && activeZones.length && (result && result.list.length);

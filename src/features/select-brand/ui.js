@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Autocomplete, Slider } from "../../shared/";
-import { selectBrand } from '../../entities/step-process/';
+import { selectBrand, fetchModels } from '../../entities/step-process/';
 
 import { popularBrands } from "../../shared/config";
 
@@ -9,12 +9,14 @@ export const SelectBrand = () => {
     let { brand, brands } = useSelector( state => state.stepReducer );
     const changeBrand = (brand) => {
         dispatch(selectBrand(brand))
+        dispatch(fetchModels(brand));
     }
     const changeBrandFromSlider = (nameBrand) => {
         const brandArr = brands.filter(({brand}) => nameBrand === brand);
         if(brandArr.length > 0){
             const [brand] = brandArr;
             dispatch(selectBrand(brand));
+            dispatch(fetchModels(brand));
         } else {
             throw new Error();
         }
