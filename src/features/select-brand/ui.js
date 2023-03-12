@@ -11,6 +11,7 @@ export const SelectBrand = () => {
         dispatch(selectBrand(brand))
         dispatch(fetchModels(brand));
     }
+    // FIX: при повторном выборе не делать запрос к серверу. Сделать проверку
     const changeBrandFromSlider = (nameBrand) => {
         const brandArr = brands.filter(({brand}) => nameBrand === brand);
         if(brandArr.length > 0){
