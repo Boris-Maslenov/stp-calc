@@ -30,8 +30,8 @@ export const fetchModels = createAsyncThunk(
     async (payload) => {
         const request = useHttp();
         //return await request(`https://stoiidlars.ru/models/?id=${payload._id}`);
-        return await request(`http://localhost:3005/models/?id=${payload._id}`);
-        //return await request('https://stoiidlars.ru/models/');
+          return await request(`http://localhost:3005/models/?id=${payload._id}`);
+
     }
 );
 
